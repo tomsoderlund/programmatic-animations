@@ -1,0 +1,38 @@
+body {
+	font-family: sans-serif;
+	background-color: #eee;
+}
+
+canvas {
+	background-color: white;
+}
+
+
+/* Nice & simple: Button - http://codepen.io/tomsoderlund/pen/qqyzqp */
+button {
+	background-color: dodgerblue;
+	color: white;
+	border-radius: 0.2em;
+	border: none;
+	box-shadow: 0 0.125em 0.125em rgba(0,0,0, 0.3);
+	box-sizing: border-box;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: bold;
+	min-width: 15em;
+	outline: none;
+	padding: 0.6em;
+	margin: 0.2em;
+	transition: all 0.2s;
+}
+button:hover:not(:disabled) {
+	opacity: 0.85;
+}
+button:hover:active {
+	opacity: 0.7;
+	transition: all 0.05s;
+}
+button:disabled {
+	background-color: silver;
+}

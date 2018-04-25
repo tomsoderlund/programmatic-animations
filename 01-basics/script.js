@@ -1,3 +1,5 @@
+//----- Rendering and Capturing -----
+
 var FRAME_RATE = 10;
 
 var isRendering = false;
@@ -5,7 +7,7 @@ var frameCount = 0;
 
 var capturer = new CCapture({
 	format: 'webm',
-	framerate: 10,
+	framerate: FRAME_RATE,
 	// verbose: true,
 });
 
@@ -29,7 +31,7 @@ var pause = function () {
 	}
 };
 
-var download = function () {
+var stopAndDownload = function () {
 	isRendering = false;
 	capturer.stop();
 	capturer.save();
@@ -37,7 +39,7 @@ var download = function () {
 
 function render () {
 	frameCount++;
-	//document.getElementById('status').innerHTML = 'Rendering ' + frameCount + ' (' + frameCount/FRAME_RATE + ' s)';
+	document.getElementById('status').innerHTML = 'Rendering ' + frameCount + ' (' + (frameCount/FRAME_RATE + '').substring(0, 4) + ' s)';
 	if (isRendering) requestAnimationFrame(render);
 	// rendering stuff ...
 	var canvas = document.getElementById('canvasElement');
@@ -45,7 +47,7 @@ function render () {
 	capturer.capture(canvas);
 }
 
-//----- Draw -----
+//----- Drawing on Canvas -----
 
 const getRandomPosition = (maxValue) => ({
 	x: Math.floor(Math.random() * maxValue),

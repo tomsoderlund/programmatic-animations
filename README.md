@@ -7,4 +7,4 @@ These examples use [CCapture.js](https://github.com/spite/ccapture.js) for captu
 
 ## Examples
 
-1. [Basics](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/01-basics/)
+1. [Basic 2D canvas drawing](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/01-basics/)

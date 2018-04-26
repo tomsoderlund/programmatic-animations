@@ -34,5 +34,6 @@ button:hover:active {
 	transition: all 0.05s;
 }
 button:disabled {
+	cursor: initial;
 	background-color: silver;
 }

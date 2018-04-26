@@ -4,6 +4,7 @@ var FRAME_RATE = 10;
 
 var isRendering = false;
 var frameCount = 0;
+var canvas;
 
 var capturer = new CCapture({
 	format: 'webm',
@@ -14,7 +15,9 @@ var capturer = new CCapture({
 var start = function () {
 	isRendering = true;
 	frameCount = 0;
-	var canvas = document.getElementById('canvasElement');
+	document.getElementById('buttonPause').removeAttribute('disabled');
+	document.getElementById('buttonDownload').removeAttribute('disabled');
+	canvas = document.getElementById('canvasElement');
 	initCanvas(canvas, canvas.getContext('2d'));
 	capturer.start();
 	render();
@@ -37,13 +40,17 @@ var stopAndDownload = function () {
 	capturer.save();
 };
 
-function render () {
+const updateStatus = function () {
 	frameCount++;
 	document.getElementById('status').innerHTML = 'Rendering ' + frameCount + ' (' + (frameCount/FRAME_RATE + '').substring(0, 4) + ' s)';
+};
+
+function render () {
+	updateStatus();
+	// Render frame
+	updateCanvas(canvas, canvas.getContext('2d'), frameCount);
 	if (isRendering) requestAnimationFrame(render);
-	// rendering stuff ...
-	var canvas = document.getElementById('canvasElement');
-	updateCanvas(canvas, canvas.getContext('2d'));
+	// Capture frame with CCapture.js
 	capturer.capture(canvas);
 }
 
@@ -61,7 +68,7 @@ const initCanvas = function (canvas, context) {
 	context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-const updateCanvas = function (canvas, context) {
+const updateCanvas = function (canvas, context, frameCount) {
 	context.strokeStyle = 'blue';
 	context.lineWidth = 5;
 	//context.strokeRect(20,20,150,100);

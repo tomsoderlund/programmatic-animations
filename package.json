@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "ccapture.js": "^1.1.0"
+    "ccapture.js": "^1.1.0",
+    "matter-js": "^0.14.1"
   }
 }

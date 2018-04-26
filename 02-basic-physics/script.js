@@ -103,7 +103,7 @@ const fillCanvas = function (canvas, context, color = 'white') {
 };
 
 const fillCanvasGradient = function (canvas, context, colorInner = 'red', colorOuter = 'blue') {
-	var gradient = context.createRadialGradient(canvas.width/2,canvas.height/2,10, canvas.width/2,canvas.height/2,canvas.width/2); // x0,y0,r0,x1,y1,r1
+	var gradient = context.createRadialGradient(canvas.width/2,canvas.height/2,10, canvas.width/2,canvas.height/2,canvas.width/2 * 1.414); // x0,y0,r0,x1,y1,r1
 	gradient.addColorStop(0, colorInner);
 	gradient.addColorStop(1, colorOuter);
 	context.fillStyle = gradient;

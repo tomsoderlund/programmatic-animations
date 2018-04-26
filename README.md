@@ -1,5 +1,10 @@
-# Programmatic Animations with CCapture
+# Programmatic Animations with CCapture.js
 
-Making movies with JavaScript and HTML Canvas. Export as WebM video files.
+Use code to make movies, with JavaScript and HTML Canvas. Export as WebM video files.
 
-These examples use [CCapture](https://github.com/spite/ccapture.js) for capturing video frames.
+These examples use [CCapture.js](https://github.com/spite/ccapture.js) for capturing video frames.
+
+
+## Examples
+
+1. [Basics](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/01-basics/)

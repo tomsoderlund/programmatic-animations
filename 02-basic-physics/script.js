@@ -92,11 +92,6 @@ Engine.run(engine);
 // run the renderer
 //Render.run(render);
 
-const initCanvas = function (canvas, context) {
-	context.fillStyle = 'white';
-	context.fillRect(0, 0, canvas.width, canvas.height);
-};
-
 const fillCanvas = function (canvas, context, color = 'white') {
 	context.fillStyle = color;
 	context.fillRect(0, 0, canvas.width, canvas.height);
@@ -124,6 +119,10 @@ const drawPolygon = function (context, body) {
 	context.closePath();
 	context.fill();
 	//context.stroke();
+};
+
+const initCanvas = function (canvas, context) {
+	fillCanvas(canvas, context);
 };
 
 const updateCanvas = function (canvas, context, frameCount) {

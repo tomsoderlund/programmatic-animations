@@ -103,7 +103,8 @@ const initCanvas = function (canvas, context) {
 		// Create the path that the satellite will follow
 		var path = pathProto.clone({
 			radius: options.distance,
-			x: options.x || 0, y: options.y || 0,
+			x: options.x || 0,
+			y: options.y || 0,
 			strokeColor: pathColors[options.depth - 1]
 		});
 		options.parent.addChild(path);
@@ -116,7 +117,8 @@ const initCanvas = function (canvas, context) {
 			},
 			speed: Math.random() * (2 * Math.random() - 0.5) + 0.5,
 			radius: options.radius,
-			x: options.x || 0, y: options.y || 0,
+			x: options.x || 0,
+			y: options.y || 0,
 			fill: satelliteColors[options.depth - 1],
 			rotation: Math.random() * 360
 		});
@@ -126,10 +128,12 @@ const initCanvas = function (canvas, context) {
 		// Create another satellite that will circle around this satellite
 		if (options.depth < depth) {
 			createSatellite({
-				parent: satellite, depth: options.depth + 1,
+				parent: satellite,
+				depth: options.depth + 1,
 				distance: options.radius * 7,
 				radius: options.radius / 1.5,
-				x: satellite.origin.x * -1, y: satellite.origin.y * -1,
+				x: satellite.origin.x * -1,
+				y: satellite.origin.y * -1,
 				speed: 10
 			});
 		}

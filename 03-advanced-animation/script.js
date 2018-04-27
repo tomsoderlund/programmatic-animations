@@ -57,6 +57,8 @@ function render () {
 
 //----- Drawing on Canvas -----
 
+// Adapted from http://ocanvas.org/demos/4
+
 var satellites = [];
 var ocanvas;
 

@@ -7,9 +7,12 @@ These examples use [CCapture.js](https://github.com/spite/ccapture.js) for captu
 
 ## Examples
 
-1. [Basic 2D canvas drawing](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/01-basics/)
-2. [Basic physics](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/02-basic-physics/) using [Matter.js](http://brm.io/matter-js/)
-3. [Advanced animation](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/03-advanced-animation/) using [oCanvas](http://ocanvas.org)
+1. [Basic 2D canvas drawing](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/01-basics/)  
+![Example](01-basics/example.gif)
+2. [Basic physics](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/02-basic-physics/) using [Matter.js](http://brm.io/matter-js/)  
+![Example](02-basic-physics/example.gif)
+3. [Advanced animation](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/03-advanced-animation/) using [oCanvas](http://ocanvas.org)  
+![Example](03-advanced-animation/example.gif)
 
 
 ## Learn more

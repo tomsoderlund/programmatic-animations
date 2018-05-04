@@ -7,7 +7,8 @@ var frameCount = 0;
 var canvas;
 
 var capturer = new CCapture({
-	format: 'webm',
+	// WebM but GIF for Safari
+	format: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 'gif' : 'webm',
 	framerate: FRAME_RATE,
 	// verbose: true,
 });

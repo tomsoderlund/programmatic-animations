@@ -14,39 +14,6 @@ var capturer = new CCapture({
 	// verbose: true,
 });
 
-var start = function () {
-	isRendering = true;
-	frameCount = 0;
-	document.getElementById('buttonPause').removeAttribute('disabled');
-	document.getElementById('buttonDownload').removeAttribute('disabled');
-	canvas = document.getElementById('canvasElement');
-	initCanvas(canvas, canvas.getContext('2d'));
-	capturer.start();
-	render();
-};
-
-var pause = function () {
-	isRendering = !isRendering;
-	if (isRendering) {
-		capturer.start();
-		render();
-	}
-	else {
-		capturer.stop();
-	}
-};
-
-var stopAndDownload = function () {
-	isRendering = false;
-	capturer.stop();
-	capturer.save();
-};
-
-const updateStatus = function () {
-	frameCount++;
-	document.getElementById('status').innerHTML = 'Rendering ' + frameCount + ' (' + (frameCount/FRAME_RATE + '').substring(0, 4) + ' s)';
-};
-
 function render () {
 	updateStatus();
 	// Render frame

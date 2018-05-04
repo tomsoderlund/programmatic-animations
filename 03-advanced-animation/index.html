@@ -6,14 +6,15 @@
 <link rel="stylesheet" href="../shared/styles.css" />
 <script src="../shared/CCapture.all.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../shared/ocanvas.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../shared/shared.js" type="text/javascript" charset="utf-8"></script>
 <script src="script.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
 	<div>
-		<button id="buttonStart" onclick="start()">Start rendering</button>
-		<button id="buttonPause" disabled onclick="pause()">Pause rendering</button>
-		<button id="buttonDownload" disabled onclick="stopAndDownload()">Download movie</button>
+		<button id="buttonStart" onclick="onClickStart()">Start rendering</button>
+		<button id="buttonPause" onclick="onClickPause()" disabled>Pause rendering</button>
+		<button id="buttonDownload" onclick="onClickDownload()" disabled>Download movie</button>
 		<span id="status"></span>
 	</div>
 

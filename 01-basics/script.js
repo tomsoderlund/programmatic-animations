@@ -1,27 +1,3 @@
-//----- Rendering and Capturing -----
-
-var FRAME_RATE = 10;
-
-var isRendering = false;
-var frameCount = 0;
-var canvas;
-
-var capturer = new CCapture({
-	// WebM but GIF for Safari
-	format: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 'gif' : 'webm',
-	framerate: FRAME_RATE,
-	// verbose: true,
-});
-
-function render () {
-	updateStatus();
-	// Render frame
-	updateCanvas(canvas, canvas.getContext('2d'), frameCount);
-	if (isRendering) requestAnimationFrame(render);
-	// Capture frame with CCapture.js
-	capturer.capture(canvas);
-}
-
 //----- Drawing on Canvas -----
 
 const getRandomPosition = (maxValue) => ({
@@ -40,9 +16,9 @@ const updateCanvas = function (canvas, context, frameCount) {
 	context.strokeStyle = 'blue';
 	context.lineWidth = 5;
 	//context.strokeRect(20,20,150,100);
-	if (!lastPosition) lastPosition = getRandomPosition(canvas.width);
+	if (!lastPosition) lastPosition = getRandomPosition(CANVAS_SIZE);
 	context.moveTo(lastPosition.x, lastPosition.y);
-	lastPosition = getRandomPosition(canvas.width);
+	lastPosition = getRandomPosition(CANVAS_SIZE);
 	context.lineTo(lastPosition.x, lastPosition.y);
 	context.stroke();
 };

@@ -1,32 +1,8 @@
-//----- Rendering and Capturing -----
-
-var FRAME_RATE = 30;
-var CANVAS_SIZE = 1080;
-var BOX_SIZE = 300;
-
-var isRendering = false;
-var frameCount = 0;
-var canvas;
-
-var capturer = new CCapture({
-	// WebM but GIF for Safari
-	format: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 'gif' : 'webm',
-	framerate: FRAME_RATE,
-	// verbose: true,
-});
-
-function render () {
-	updateStatus();
-	// Render frame
-	updateCanvas(canvas, canvas.getContext('2d'), frameCount);
-	if (isRendering) requestAnimationFrame(render);
-	// Capture frame with CCapture.js
-	capturer.capture(canvas);
-}
-
 //----- Drawing on Canvas -----
 
 // From https://github.com/liabru/matter-js/wiki/Getting-started
+
+var BOX_SIZE = percentToPixel(25);
 
 // module aliases
 var Engine = Matter.Engine,

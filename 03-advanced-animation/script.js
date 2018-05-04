@@ -1,117 +1,96 @@
-//----- Rendering and Capturing -----
-
-var FRAME_RATE = 30;
-var CANVAS_SIZE = 1080;
-
-var isRendering = false;
-var frameCount = 0;
-var canvas;
-
-var capturer = new CCapture({
-	// WebM but GIF for Safari
-	format: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 'gif' : 'webm',
-	framerate: FRAME_RATE,
-	// verbose: true,
-});
-
-function render () {
-	updateStatus();
-	// Render frame
-	updateCanvas(canvas, canvas.getContext('2d'), frameCount);
-	if (isRendering) requestAnimationFrame(render);
-	// Capture frame with CCapture.js
-	capturer.capture(canvas);
-}
-
 //----- Drawing on Canvas -----
 
 // Adapted from http://ocanvas.org/demos/4
 
-var satellites = [];
+var CAR_SPEED = 5;
+
 var ocanvas;
+var invisibleLineCar1, invisibleLineCar2;
 
 const initCanvas = function (canvas, context) {
 
 	ocanvas = oCanvas.create({
-		canvas: "#canvasElement",
-		background: "#222",
+		canvas: '#canvasElement',
+		background: '#84B317',
 		fps: FRAME_RATE,
 		disableScrolling: true,
 	});
 
-	// Center planet
-	var center = ocanvas.display.ellipse({
-		x: ocanvas.width / 2, y: ocanvas.height / 2,
-		radius: ocanvas.width / 20,
-		fill: "#fff"
-	}).add();
+	var radius = 25;
+	var distance = 32;
 
-	// Prototype objects that will be used to instantiate the others
-	var satelliteProto = ocanvas.display.ellipse({ fill: "#eee" });
-	var pathProto = ocanvas.display.ellipse({ stroke: "1px #999" });
-
-	// Set up data
-	var depth = 3;
-	var satelliteColors = ["#107B99", "#5F92C0", "#c7509f"];
-	var pathColors = ["#666", "#107B99", "#5F92C0"];
-
-	// Create seven satellites and paths. Definition is further down.
-	for (var i = 0, l = 7; i < l; i++) {
-		createSatellite({
-			parent: center, depth: 1,
-			distance: (i + 1) * ocanvas.width / 6,
-			radius: ocanvas.width / 100,
-			speed: 1
-		});
-	}
-
-	// Definition for a satellite and its corresponding path
-	function createSatellite (options) {
-
-		// Create the path that the satellite will follow
-		var path = pathProto.clone({
-			radius: options.distance,
-			x: options.x || 0,
-			y: options.y || 0,
-			strokeColor: pathColors[options.depth - 1]
-		});
-		options.parent.addChild(path);
-
-		// Create a new satellite
-		var satellite = satelliteProto.clone({
-			origin: {
-				x: 0,
-				y: options.distance * (Math.round(Math.random()) ? 1 : -1)
-			},
-			speed: Math.random() * (2 * Math.random() - 0.5) + 0.5,
-			radius: options.radius,
-			x: options.x || 0,
-			y: options.y || 0,
-			fill: satelliteColors[options.depth - 1],
-			rotation: Math.random() * 360
-		});
-		options.parent.addChild(satellite);
-		satellites.push(satellite);
-
-		// Create another satellite that will circle around this satellite
-		if (options.depth < depth) {
-			createSatellite({
-				parent: satellite,
-				depth: options.depth + 1,
-				distance: options.radius * 7,
-				radius: options.radius / 1.5,
-				x: satellite.origin.x * -1,
-				y: satellite.origin.y * -1,
-				speed: 10
-			});
+	// Track
+	ocanvas.display.register(
+		'track',
+		{ shapeType: 'radial' },
+		function (ocanvas) {
+			// Asphalt
+			ocanvas.strokeStyle = '#858480';
+			ocanvas.lineWidth = percentToPixel(10);
+			ocanvas.beginPath();
+			ocanvas.arc(this.abs_x, this.abs_y, this.radius_x, 0, 2 * Math.PI);
+			ocanvas.stroke();
+			// Center line
+			ocanvas.strokeStyle = '#B8B7B4';
+			ocanvas.lineWidth = percentToPixel(0.5);
+			ocanvas.setLineDash([percentToPixel(3), percentToPixel(1)]);
+			ocanvas.beginPath();
+			ocanvas.arc(this.abs_x, this.abs_y, this.radius_x, 0, 2 * Math.PI);
+			ocanvas.stroke();
 		}
-	}
+	);
+	ocanvas.addChild(ocanvas.display.track({
+		x: percentToPixel(distance),
+		y: percentToPixel(distance),
+		radius_x: percentToPixel(radius),
+	}));
+	ocanvas.addChild(ocanvas.display.track({
+		x: percentToPixel(100 - distance),
+		y: percentToPixel(100 - distance),
+		radius_x: percentToPixel(radius),
+	}));
+
+	// Car 1: line that car will follow
+	invisibleLineCar1 = ocanvas.display.ellipse({
+		x: percentToPixel(distance),
+		y: percentToPixel(distance),
+		radius_x: percentToPixel(radius),
+		radius_y: percentToPixel(radius),
+	});
+	ocanvas.addChild(invisibleLineCar1);
+	// Car 1: car sprite
+	var car1 = ocanvas.display.image({
+		x: 0,
+		y: percentToPixel(-distance + 7),
+		origin: { x: 'center', y: 'center' },
+		image: 'car_red.png'
+	});
+	car1.scale(0.2);
+	invisibleLineCar1.addChild(car1);
+
+	// Car 2: line that car will follow
+	invisibleLineCar2 = ocanvas.display.ellipse({
+		x: percentToPixel(100 - distance),
+		y: percentToPixel(100 - distance),
+		radius_x: percentToPixel(radius),
+		radius_y: percentToPixel(radius),
+	});
+	ocanvas.addChild(invisibleLineCar2);
+	// Car 2: car sprite
+	var car2 = ocanvas.display.image({
+		x: 0,
+		y: percentToPixel(-distance + 7),
+		origin: { x: 'center', y: 'center' },
+		image: 'car_yellow.png'
+	});
+	car2.scale(0.2);
+	invisibleLineCar2.addChild(car2);
+	invisibleLineCar2.rotateTo(100);
 
 };
 
 const updateCanvas = function (canvas, context, frameCount) {
-	for (var i = 0, l = satellites.length; i < l; i++) {
-		satellites[i].rotation += satellites[i].speed;
-	}
+	invisibleLineCar1.rotation += CAR_SPEED;
+	invisibleLineCar2.rotation += CAR_SPEED;
 	ocanvas.draw.redraw();
 };

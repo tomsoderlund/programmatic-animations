@@ -2,6 +2,7 @@
   "dependencies": {
     "ccapture.js": "^1.1.0",
     "matter-js": "^0.14.1",
-    "ocanvas": "^2.9.1"
+    "ocanvas": "^2.9.1",
+    "tinycolor2": "^1.4.1"
   }
 }

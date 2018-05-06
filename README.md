@@ -13,6 +13,8 @@ These examples use [CCapture.js](https://github.com/spite/ccapture.js) for captu
 ![Example](02-basic-physics/example.gif)
 3. [Advanced animation](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/03-advanced-animation/) using [oCanvas](http://ocanvas.org)  
 ![Example](03-advanced-animation/example.gif)
+4. [Mouse position as input](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/04-mouse/)  
+![Example](04-mouse/example.gif)
 
 
 ## Learn more

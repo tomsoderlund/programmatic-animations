@@ -1,3 +1,8 @@
+
+var FRAME_RATE = 30;
+var CANVAS_SIZE = 540;
+
+
 //----- UI helpers -----
 
 var toggleElementDisabled = function (elementId) {
@@ -12,9 +17,6 @@ var updateStatus = function () {
 };
 
 //----- Rendering and Capturing -----
-
-var FRAME_RATE = 30;
-var CANVAS_SIZE = 540;
 
 var isRendering = false;
 var frameCount = 0;
@@ -48,6 +50,42 @@ var renderNextFrame = function () {
 var percentToPixel = function (percent) {
 	return percent / 100 * CANVAS_SIZE;
 };
+
+var getRandomValue = function (minValue, maxValue) {
+	return minValue + Math.random() * (maxValue - minValue)
+};
+
+//----- Image Data -----
+
+var ImagePixels = function (imageUrl, scaleFactor=1.0, cb) {
+	const MAX_PIXELS = 100;
+	const imagePixelObject = this;
+	const tempImg = new Image();
+	tempImg.src = imageUrl;
+	tempImg.onload = function () {
+		const context = document.createElement('canvas').getContext('2d');
+		imagePixelObject.imageUrl = imageUrl;
+		imagePixelObject.width =  Math.min(Math.round(tempImg.naturalWidth * scaleFactor), MAX_PIXELS);
+		imagePixelObject.height = Math.min(Math.round(tempImg.naturalHeight * scaleFactor), MAX_PIXELS);
+		context.drawImage(tempImg, 0, 0, imagePixelObject.width, imagePixelObject.height);
+		imagePixelObject.pixels = context.getImageData(0, 0, imagePixelObject.width, imagePixelObject.height).data;
+		if (cb) cb();
+	}
+}
+ImagePixels.prototype.getPixels = function () {
+	return this.pixels;
+};
+ImagePixels.prototype.getPixel = function (x, y) {
+	const pixelIndex = y * this.width * 4 + x * 4;
+	const pixelValues = this.pixels ? this.pixels.slice(pixelIndex, pixelIndex+4) : [];
+	return {
+		r: pixelValues[0],
+		g: pixelValues[1],
+		b: pixelValues[2],
+		a: pixelValues[3]
+	}
+};
+
 
 //----- Button actions -----
 

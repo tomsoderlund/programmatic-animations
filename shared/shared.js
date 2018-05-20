@@ -58,7 +58,7 @@ var getRandomValue = function (minValue, maxValue) {
 //----- Image Data -----
 
 var ImagePixels = function (imageUrl, scaleFactor=1.0, cb) {
-	const MAX_PIXELS = 100;
+	const MAX_PIXELS = 500;
 	const imagePixelObject = this;
 	const tempImg = new Image();
 	tempImg.src = imageUrl;

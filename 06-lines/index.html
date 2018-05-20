@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html lang="en-us">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<title>Example 06: Lines</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+<script src="../shared/CCapture.all.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../shared/shared.js" type="text/javascript" charset="utf-8"></script>
+<script src="script.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+	<div>
+		<button id="buttonStart" onclick="onClickStart()">Start rendering</button>
+		<button id="buttonPause" onclick="onClickPause()" disabled>Pause rendering</button>
+		<button id="buttonDownload" onclick="onClickDownload()" disabled>Download movie</button>
+		<span id="status"></span>
+	</div>
+
+	<canvas
+		id="canvasElement"
+		width="540"
+		height="540"
+		style="border:1px solid #ccc;"
+		></canvas>
+
+</body>
+</html>

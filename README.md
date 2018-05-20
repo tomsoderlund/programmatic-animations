@@ -15,8 +15,15 @@ These examples use [CCapture.js](https://github.com/spite/ccapture.js) for captu
 ![Example](03-advanced-animation/example.gif)
 4. [Mouse position as input](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/04-mouse/)  
 ![Example](04-mouse/example.gif)
-5. [Image pixel data](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/05-image-data/)  
+5. [Image data](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/05-image-data/)  
 ![Example](05-image-data/example.gif)
+6. [Lines from image data](https://tomsoderlund.github.io/programmatic-animations-with-ccapture/06-lines/)  
+![Example](06-lines/example.gif)
+
+
+## Share your work!
+
+If you make your own animations based on these examples, please share with the hashtag [#programmaticanimations](https://www.instagram.com/explore/tags/programmaticanimations/).
 
 
 ## Learn more

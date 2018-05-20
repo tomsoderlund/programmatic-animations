@@ -1,4 +1,4 @@
-# Programmatic Animations with CCapture.js
+# Programmatic Animations
 
 Use code to make animated movies, using JavaScript and HTML Canvas. Export as WebM video files (not supported in Safari).
 

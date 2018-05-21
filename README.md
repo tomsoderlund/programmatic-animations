@@ -23,7 +23,7 @@ These examples use [CCapture.js](https://github.com/spite/ccapture.js) for captu
 
 ## Share your work!
 
-If you make your own animations based on these examples, please share with the hashtag [#programmaticanimations](https://www.instagram.com/explore/tags/programmaticanimations/).
+If you make your own animations based on these examples, please share with the hashtag [**#programmaticanimations**](https://www.instagram.com/explore/tags/programmaticanimations/).
 
 
 ## Learn more

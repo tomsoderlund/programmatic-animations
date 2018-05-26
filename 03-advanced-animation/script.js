@@ -23,20 +23,20 @@ const initCanvas = function (canvas, context) {
 	ocanvas.display.register(
 		'track',
 		{ shapeType: 'radial' },
-		function (ocanvas) {
+		function (ctx) {
 			// Asphalt
-			ocanvas.strokeStyle = '#858480';
-			ocanvas.lineWidth = percentToPixel(10);
-			ocanvas.beginPath();
-			ocanvas.arc(this.abs_x, this.abs_y, this.radius_x, 0, 2 * Math.PI);
-			ocanvas.stroke();
+			ctx.strokeStyle = '#858480';
+			ctx.lineWidth = percentToPixel(10);
+			ctx.beginPath();
+			ctx.arc(this.abs_x, this.abs_y, this.radius_x, 0, 2 * Math.PI);
+			ctx.stroke();
 			// Center line
-			ocanvas.strokeStyle = '#B8B7B4';
-			ocanvas.lineWidth = percentToPixel(0.5);
-			ocanvas.setLineDash([percentToPixel(3), percentToPixel(1)]);
-			ocanvas.beginPath();
-			ocanvas.arc(this.abs_x, this.abs_y, this.radius_x, 0, 2 * Math.PI);
-			ocanvas.stroke();
+			ctx.strokeStyle = '#B8B7B4';
+			ctx.lineWidth = percentToPixel(0.5);
+			ctx.setLineDash([percentToPixel(3), percentToPixel(1)]);
+			ctx.beginPath();
+			ctx.arc(this.abs_x, this.abs_y, this.radius_x, 0, 2 * Math.PI);
+			ctx.stroke();
 		}
 	);
 	ocanvas.addChild(ocanvas.display.track({

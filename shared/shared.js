@@ -55,6 +55,10 @@ var getRandomValue = function (minValue, maxValue) {
 	return minValue + Math.random() * (maxValue - minValue)
 };
 
+var getRandomFromArray = function (array) {
+	return array[Math.floor(Math.random() * array.length)];
+};
+
 //----- Image Data -----
 
 var ImagePixels = function (imageUrl, scaleFactor=1.0, cb) {

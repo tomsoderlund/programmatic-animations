@@ -1,34 +1,33 @@
-
-var FRAME_RATE = 30
-var CANVAS_SIZE = 540
+const FRAME_RATE = 30
+const CANVAS_SIZE = 540
 
 // ----- UI helpers -----
 
-var toggleElementDisabled = function (elementId) {
+const toggleElementDisabled = function (elementId) {
   document.getElementById(elementId).getAttribute('disabled') !== null
     ? document.getElementById(elementId).removeAttribute('disabled')
     : document.getElementById(elementId).setAttribute('disabled', true)
 }
 
-var updateStatus = function () {
+const updateStatus = function () {
   frameCount++
   document.getElementById('status').innerHTML = 'Rendering ' + frameCount + ' (' + (frameCount / FRAME_RATE + '').substring(0, 4) + ' s)'
 }
 
 // ----- Rendering and Capturing -----
 
-var isRendering = false
-var frameCount = 0
-var canvas
+let isRendering = false
+let frameCount = 0
+let canvas
 
-var capturer = new CCapture({
+const capturer = new CCapture({
   // WebM but GIF for Safari
   format: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 'gif' : 'webm',
   framerate: FRAME_RATE
   // verbose: true,
 })
 
-var setCanvasElement = function (elementId) {
+const setCanvasElement = function (elementId) {
   canvas = document.getElementById(elementId)
   canvas.width = CANVAS_SIZE * 2
   canvas.height = CANVAS_SIZE * 2
@@ -37,7 +36,7 @@ var setCanvasElement = function (elementId) {
   canvas.getContext('2d').scale(2, 2) // Retina screen
 }
 
-var renderNextFrame = function () {
+const renderNextFrame = function () {
   updateStatus()
   // Render frame
   updateCanvas(canvas, canvas.getContext('2d'), frameCount)
@@ -46,21 +45,21 @@ var renderNextFrame = function () {
   capturer.capture(canvas)
 }
 
-var percentToPixel = function (percent) {
+const percentToPixel = function (percent) {
   return percent / 100 * CANVAS_SIZE
 }
 
-var getRandomValue = function (minValue, maxValue) {
+const getRandomValue = function (minValue, maxValue) {
   return minValue + Math.random() * (maxValue - minValue)
 }
 
-var getRandomFromArray = function (array) {
+const getRandomFromArray = function (array) {
   return array[Math.floor(Math.random() * array.length)]
 }
 
 // ----- Image Data -----
 
-var ImagePixels = function (imageUrl, scaleFactor = 1.0, cb) {
+const ImagePixels = function (imageUrl, scaleFactor = 1.0, cb) {
   const MAX_PIXELS = 500
   const imagePixelObject = this
   const tempImg = new Image()
@@ -91,7 +90,7 @@ ImagePixels.prototype.getPixel = function (x, y) {
 
 // ----- Button actions -----
 
-var onClickStart = function () {
+const onClickStart = function () {
   isRendering = true
   frameCount = 0
   toggleElementDisabled('buttonPause')
@@ -102,7 +101,7 @@ var onClickStart = function () {
   renderNextFrame()
 }
 
-var onClickPause = function () {
+const onClickPause = function () {
   isRendering = !isRendering
   if (isRendering) {
     capturer.start()
@@ -112,7 +111,7 @@ var onClickPause = function () {
   }
 }
 
-var onClickDownload = function () {
+const onClickDownload = function () {
   isRendering = false
   capturer.stop()
   capturer.save()

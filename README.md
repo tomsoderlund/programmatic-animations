@@ -6,7 +6,7 @@ Export as WebM video files* and then use e.g. [VLC Media Player](https://www.vid
 
 *Not supported in Safari
 
-These examples use [CCapture.js](https://github.com/spite/ccapture.js) for capturing video frames.
+Uses [CCapture.js](https://github.com/spite/ccapture.js) for capturing video frames.
 
 
 ## Examples

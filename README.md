@@ -1,6 +1,6 @@
 # Programmatic Animations
 
-Use code to make animated movies, using JavaScript and HTML Canvas.
+Make animations with JavaScript and export as video.
 
 Export as WebM video files* and then use e.g. [VLC Media Player](https://www.videolan.org) to convert WebM to MP4 (File → Convert/Stream, MP4/MOV and MPEG-4 format).
 

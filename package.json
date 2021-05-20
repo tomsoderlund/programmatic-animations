@@ -1,7 +1,7 @@
 {
   "name": "programmatic-animations",
   "version": "0.2.0",
-  "description": "Use code to make animated movies",
+  "description": "Make animations with JavaScript and export as video",
   "author": "Tom Söderlund",
   "license": "MIT",
   "scripts": {

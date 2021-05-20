@@ -1,6 +1,10 @@
 # Programmatic Animations
 
-Use code to make animated movies, using JavaScript and HTML Canvas. Export as WebM video files (not supported in Safari).
+Use code to make animated movies, using JavaScript and HTML Canvas.
+
+Export as WebM video files* and then use e.g. [VLC Media Player](https://www.videolan.org) to convert WebM to MP4 (File → Convert/Stream, MP4/MOV and MPEG-4 format).
+
+*Not supported in Safari
 
 These examples use [CCapture.js](https://github.com/spite/ccapture.js) for capturing video frames.
 
@@ -29,4 +33,3 @@ If you make your own animations based on these examples, please share with the h
 ## Learn more
 
 - For more information on [how to draw with HTML Canvas, see this example](https://codepen.io/tomsoderlund/pen/Gdjrdx).
-- You can use [VLC Media Player](https://www.videolan.org) to convert WebM to MP4 (File → Convert/Stream, MP4/MOV and MPEG-4 format).

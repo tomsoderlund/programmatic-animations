@@ -44,3 +44,8 @@ button:disabled {
 	cursor: initial;
 	background-color: silver;
 }
+
+#status {
+	width: 120px;
+	text-align: center;
+}

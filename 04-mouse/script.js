@@ -94,19 +94,23 @@ const drawAllTriangles = function (context) {
 
 // From https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/
 const getMousePos = function (canvas, event) {
+  const clientParent = event.touches ? event.touches[0] : event
   const rect = canvas.getBoundingClientRect()
   return {
-    x: event.clientX - rect.left,
-    y: event.clientY - rect.top
+    x: clientParent.clientX - rect.left,
+    y: clientParent.clientY - rect.top
   }
 }
 
+const onMouseMove = function (event) {
+  const mousePos = getMousePos(canvas, event)
+  const triangleData = getTriangleAtCoordinates(mousePos.x, mousePos.y)
+  setTriangle(triangleData.c, triangleData.r, 1)
+}
+
 const initMouse = function (canvas, context) {
-  canvas.addEventListener('mousemove', function (event) {
-    const mousePos = getMousePos(canvas, event)
-    const triangleData = getTriangleAtCoordinates(mousePos.x, mousePos.y)
-    setTriangle(triangleData.c, triangleData.r, 1)
-  }, false)
+  canvas.addEventListener('mousemove', onMouseMove, false)
+  canvas.addEventListener('touchmove', onMouseMove, false)
 }
 
 // ----- Main -----

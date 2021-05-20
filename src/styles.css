@@ -1,30 +1,37 @@
 body {
 	font-family: sans-serif;
 	background-color: #eee;
+	margin: 8px;
 }
 
 canvas {
 	background-color: white;
 }
 
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 540px;
+	display: flex;
+}
 
 /* Nice & simple: Button - http://codepen.io/tomsoderlund/pen/qqyzqp */
 button {
 	background-color: dodgerblue;
 	color: white;
-	border-radius: 0.2em;
+	border-radius: 0.1em;
 	border: none;
-	box-shadow: 0 0.125em 0.125em rgba(0,0,0, 0.3);
 	box-sizing: border-box;
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: bold;
-	min-width: 15em;
 	outline: none;
 	padding: 0.6em;
-	margin: 0.2em;
+	margin: 0 0.1em 0.2em;
 	transition: all 0.2s;
+	flex: 1;
 }
 button:hover:not(:disabled) {
 	opacity: 0.85;

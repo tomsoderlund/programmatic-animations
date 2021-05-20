@@ -1,8 +1,20 @@
 {
+  "name": "programmatic-animations",
+  "version": "0.2.0",
+  "description": "Use code to make animated movies",
+  "author": "Tom Söderlund",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard",
+    "fix": "standard --fix"
+  },
   "dependencies": {
     "ccapture.js": "^1.1.0",
     "matter-js": "^0.14.1",
     "ocanvas": "^2.9.1",
     "tinycolor2": "^1.4.1"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
   }
 }

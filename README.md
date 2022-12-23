@@ -1,9 +1,9 @@
 # Programmatic Animations
 
-Make animations with canvas and JavaScript, and export as video.
+**Make animations with canvas and JavaScript, and export as video.**
 
 Export as WebM video files* and then use e.g. [VLC Media Player](https://www.videolan.org) to convert WebM to MP4 (File → Convert/Stream, MP4/MOV and MPEG-4 format).
-
+\
 *Not supported in Safari
 
 Uses [CCapture.js](https://github.com/spite/ccapture.js) for capturing video frames.
@@ -11,7 +11,7 @@ Uses [CCapture.js](https://github.com/spite/ccapture.js) for capturing video fra
 
 ## Examples
 
-1. [Basic 2D canvas drawing](https://tomsoderlund.github.io/programmatic-animations/01-basics/)  
+1. [Basic: drawing lines](https://tomsoderlund.github.io/programmatic-animations/01-basics/)  
 ![Example](01-basics/example.gif)
 2. [Basic physics](https://tomsoderlund.github.io/programmatic-animations/02-basic-physics/) using [Matter.js](http://brm.io/matter-js/)  
 ![Example](02-basic-physics/example.gif)
@@ -21,8 +21,11 @@ Uses [CCapture.js](https://github.com/spite/ccapture.js) for capturing video fra
 ![Example](04-mouse/example.gif)
 5. [Image data](https://tomsoderlund.github.io/programmatic-animations/05-image-data/)  
 ![Example](05-image-data/example.gif)
-6. [Lines from image data](https://tomsoderlund.github.io/programmatic-animations/06-lines/)  
+6. [Image data 2: lines](https://tomsoderlund.github.io/programmatic-animations/06-lines/)  
 ![Example](06-lines/example.gif)
+7. [City cars](https://tomsoderlund.github.io/programmatic-animations/07-city-cars)  
+![Example](07-city-cars/example.png)
+8. [Using P5.js](https://tomsoderlund.github.io/programmatic-animations/08-p5js)
 
 
 ## Share your work!

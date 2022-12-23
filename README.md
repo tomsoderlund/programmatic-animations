@@ -1,5 +1,7 @@
 # Programmatic Animations
 
+🆕 See also: https://programmatic-animations.vercel.app/editor
+
 **Make animations with canvas and JavaScript, and export as video.**
 
 Export as WebM video files* and then use e.g. [VLC Media Player](https://www.videolan.org) to convert WebM to MP4 (File → Convert/Stream, MP4/MOV and MPEG-4 format).

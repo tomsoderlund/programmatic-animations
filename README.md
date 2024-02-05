@@ -1,6 +1,6 @@
 # Programmatic Animations
 
-🆕 See also: https://programmatic-animations.vercel.app/editor
+🆕 See also: [https://programmatic-animations.tomorroworld.com/](https://programmatic-animations.tomorroworld.com/) (`touch-art`)
 
 **Make animations with canvas and JavaScript, and export as video.**
 
